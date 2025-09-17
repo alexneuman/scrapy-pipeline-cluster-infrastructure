@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scrapy-job
+  labels:
+    app: scrapy-job
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: scrapy-job
+  template:
+    metadata:
+      labels:
+        app: scrapy-job
+    spec:
+      containers:
+        - name: scrapy-job
+          image: scrapy-job
+        

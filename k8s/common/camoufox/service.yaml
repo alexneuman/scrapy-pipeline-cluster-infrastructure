@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: camoufox
+  # namespace: camoufox
+spec:
+  clusterIP: None
+  selector:
+    app: camoufox
+  ports:
+  - protocol: TCP
+    port: 59001
+    targetPort: 59001
+    name: camoufox
+  - protocol: TCP
+    port: 6080 
+    targetPort: 6080
+    name: display

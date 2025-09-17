@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: camoufox-vs
+  namespace: camoufox
+spec:
+  hosts: 
+    - camoufox.camoufox.svc.cluster.local
+  http:
+    - match:
+        - sourceLabels:
+             app: scrapy-job
+      route:
+        - destination:
+            host: camoufox.camoufox.svc.cluster.local
+            port:
+              number: 59001

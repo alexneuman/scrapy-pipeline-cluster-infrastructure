@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      initContainers:
+        - name: migrate
+          image: alexshrugged92/web-scraping-backend:latest
+          command: ["alembic", "upgrade", "head"]
+          # command: ["sleep", "inf"]
+          env:
+            - name: DATABASE_URL
+              value: "postgresql+asyncpg://postgres:postgres@database.database.svc.cluster.local:5432/foo"
+            - name: SECRET_KEY
+              value: "mysecret"
+        - name: seed
+          image: alexshrugged92/web-scraping-backend:latest
+          command: ["app/init_dummy_data.sh"]
+          env:
+            - name: DATABASE_URL
+              value: "postgresql+asyncpg://postgres:postgres@database.database.svc.cluster.local:5432/foo"
+
+      containers:
+        - name: backend
+          image: alexshrugged92/web-scraping-backend:latest
+          ports:
+            - containerPort: 8000
+          env:
+          #   - name: DATABASE_URL
+          #     value: "postgresql+asyncpg://postgres:postgres@database:5432/foo"
+            - name: SECRET_KEY
+              value: "mysecret"
+            - name: DATABASE_URL
+              value: 'postgresql+asyncpg://postgres:postgres@database.database.svc.cluster.local:5432/foo'

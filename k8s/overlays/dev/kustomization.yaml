@@ -1,0 +1,11 @@
+resources:
+  - namespace.yaml
+  - ../../base
+  - ../../common/proxy
+  - ../../common/redis-commander
+  - ../../common/redis-insight
+  - ./scrapy-job/
+  # - ingress.yaml
+
+# namePrefix: dev-
+# namespace: dev

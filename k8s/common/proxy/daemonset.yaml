@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: proxy-client-ds
+  # namespace: proxy
+spec:
+  # replicas: 1
+  selector:
+    matchLabels:
+      app: proxy-client
+  template:
+    metadata:
+      labels:
+        app: proxy-client
+    spec:
+      containers:
+      - name: proxy-client
+        image: vimagick/privoxy
+        ports:
+        - containerPort: 8118

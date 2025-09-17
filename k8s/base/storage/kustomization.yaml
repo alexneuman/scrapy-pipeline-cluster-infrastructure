@@ -1,0 +1,4 @@
+resources:
+  - scrapy-cache-pv.yaml
+  - scrapy-cache-pvc.yaml
+  
