@@ -5,11 +5,16 @@ metadata:
   namespace: argocd
 spec:
   generators:
-    - git:
-        repoURL: 'https://github.com/alexneuman/scrapy-pipeline-cluster-infrastructure.git'
-        revision: test            # branch to track
-        directories:
-          - path: 'k8s/helm/*'   # wildcard matches all subfolders with Helm charts
+    - matrix:
+        generators:
+        - git:
+            repoURL: 'https://github.com/alexneuman/scrapy-pipeline-cluster-infrastructure.git'
+            revision: test            # branch to track
+            directories:
+              - path: 'k8s/helm/*'   # wildcard matches all subfolders with Helm charts
+        - list:
+            elements:
+              - env: "dev"
   template:
     metadata:
       name: '{{path.basename}}' # Application name = folder name
@@ -18,7 +23,7 @@ spec:
       source:
         repoURL: 'https://github.com/alexneuman/scrapy-pipeline-cluster-infrastructure.git'
         targetRevision: test
-        path: '{{path}}'         # folder containing the chart
+        path: '{{env}}{{path}}'         # folder containing the chart
         helm:
           valueFiles:
             - values.yaml        # values file in each chart folder
