@@ -26,8 +26,8 @@ spec:
         path: 'k8s/helm/charts/{{path.basename}}'         # folder containing the chart
         helm:
           valueFiles:
-            - "../../values/{{env}}/values.yaml"
-            # - "../../values/{{env}}/{{path.basename}}/values.yaml"       # values file in each chart folder
+            - "../../charts/{{path.basename}}/values.yaml"
+            - "../../values/{{env}}/{{path.basename}}/values.yaml"       # values file in each chart folder
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{path.basename}}'  # deploy each chart to its own namespace
