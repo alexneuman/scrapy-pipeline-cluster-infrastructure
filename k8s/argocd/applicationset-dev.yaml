@@ -11,6 +11,8 @@ spec:
             namespace: ingress-nginx
           - name: cert-manager
             namespace: cert-manager
+          - name: redis
+            namespace: redis
   template:
     metadata:
       name: '{{name}}-{{env}}' # Application name = folder name
