@@ -2,28 +2,29 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: helm-charts
+  namespace: argocd
 spec:
   generators:
-  - git:
-      repoURL: 'https://github.com/alexneuman/scrapy-pipeline-cluster-infrastructure.git'
-      revision: test
-      directories:
-        - path: 'k8s/helm/*'
+    - git:
+        repoURL: 'https://github.com/alexneuman/scrapy-pipeline-cluster-infrastructure.git'
+        revision: test            # branch to track
+        directories:
+          - path: 'k8s/helm/*'   # wildcard matches all subfolders with Helm charts
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: '{{path.basename}}' # Application name = folder name
     spec:
       project: default
       source:
         repoURL: 'https://github.com/alexneuman/scrapy-pipeline-cluster-infrastructure.git'
         targetRevision: test
-        path: '{{path}}'
+        path: '{{path}}'         # folder containing the chart
         helm:
           valueFiles:
-            - values.yaml
+            - values.yaml        # values file in each chart folder
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{path.basename}}'
+        namespace: '{{path.basename}}'  # deploy each chart to its own namespace
       syncPolicy:
         automated:
           prune: true
