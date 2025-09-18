@@ -30,7 +30,7 @@ spec:
             - "../../values/{{env}}/{{path.basename}}/values.yaml"       # values file in each chart folder
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{path.basename}}'  # deploy each chart to its own namespace
+        # namespace: '{{path.basename}}'  # deploy each chart to its own namespace
       syncPolicy:
         automated:
           prune: true
