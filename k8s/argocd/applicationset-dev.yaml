@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: helm-charts-via-kustomize
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: ingress-nginx
+            namespace: ingress-nginx
+          - name: cert-manager
+            namespace: cert-manager
+  template:
+    metadata:
+      name: '{{name}}-{{env}}' # Application name = folder name
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/alexneuman/scrapy-pipeline-cluster-infrastructure.git'
+        targetRevision: test
+        path: 'k8s/helm/charts/{{name}}'         # folder containing the chart
+        helm:
+          valueFiles:
+            - "../../charts/{{name}}/values.yaml"
+            - "../../values/dev/{{name}}/values.yaml"       # values file in each chart folder
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'  # deploy each chart to its own namespace
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
