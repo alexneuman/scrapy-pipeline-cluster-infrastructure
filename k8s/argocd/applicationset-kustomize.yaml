@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: helm-charts-via-kustomize
+  namespace: argocd
+spec:
+  generators:
+    - matrix:
+        generators:
+          - list:
+              elements:
+                - env: "dev"
+          - git:
+              repoURL: 'https://github.com/alexneuman/scrapy-pipeline-cluster-infrastructure.git'
+              revision: test
+              directories:
+                - path: 'k8s/helm/values/{{env}}/*'
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/alexneuman/scrapy-pipeline-cluster-infrastructure.git'
+        targetRevision: test
+        path: 'k8s/helm/kcharts/{{path.basename}}'   # <- now points at kustomize folder
+        kustomize: {}                                  # <- enable kustomize renderer
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
