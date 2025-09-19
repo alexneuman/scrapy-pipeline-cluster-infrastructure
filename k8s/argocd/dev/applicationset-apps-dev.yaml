@@ -15,7 +15,7 @@ spec:
           namespace: dev
         - name: camoufox
           path: k8s/apps/common/camoufox
-          namespace: dev
+          # namespace: dev
         - name: proxy
           path: k8s/apps/common/proxy
           namespace: dev
