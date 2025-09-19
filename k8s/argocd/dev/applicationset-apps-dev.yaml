@@ -18,7 +18,7 @@ spec:
           # namespace: dev
         - name: proxy
           path: k8s/apps/common/proxy
-          namespace: dev
+          # namespace: dev
         - name: redis
           path: k8s/apps/base/redis
           # namespace: dev
@@ -27,7 +27,7 @@ spec:
           namespace: dev
         - name: scrapy-job
           path: k8s/apps/common/scrapy-job
-          namespace: dev
+          # namespace: dev
   template:
     metadata:
       name: '{{name}}'
