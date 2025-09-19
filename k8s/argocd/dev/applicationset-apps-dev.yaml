@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: my-applicationset
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: mock-ws-backend
+            path: k8s/common/mock-ws-backend
+            namespace: dev
+          - name: database
+            path: k8s/common/database
+            namespace: dev
+          - name: camoufox
+            path: k8s/common/camoufox
+            namespace: dev
+          - name: proxy
+            path: k8s/common/proxy
+            namespace: dev
+          - name: redis-commander
+            path: k8s/common/redis-commander
+            namespace: dev
+          - name: scrapy-job
+            path: k8s/dev/scrapy-job
+            namespace: dev
+  template:
+    metadata:
+      name: '{{name}}'
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/alexneuman/scrapy-pipeline-cluster-infrastructure.git'
+        targetRevision: main
+        path: '{{path}}'
+        directory:
+          recurse: true
+      destination:
+        server: https://kubernetes.default.svc
+        # namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
