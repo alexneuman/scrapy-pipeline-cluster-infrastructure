@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: helm-charts-via-kustomize
+  name: applicationset-dev
   namespace: argocd
 spec:
   generators:
@@ -11,11 +11,11 @@ spec:
             namespace: ingress-nginx
           - name: cert-manager
             namespace: cert-manager
-          - name: redis
-            namespace: redis
+          - name: prometheus
+            namespace: prometheus
   template:
     metadata:
-      name: '{{name}}-{{env}}' # Application name = folder name
+      name: '{{name}}-dev' # Application name = folder name
     spec:
       project: default
       source:

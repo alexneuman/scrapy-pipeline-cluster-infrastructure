@@ -1,0 +1,9 @@
+
+resources:
+  - ../../base
+  - ../../common/mock-ws-backend
+  - ../../common/database
+  - ../../common/camoufox
+  - ../../common/proxy
+  - ../../common/redis-commander
+  - scrapy-job

@@ -1,0 +1,5 @@
+resources:
+  - ../../base
+  - keda/
+  - destinationrule.yaml
+  - virtualservice.yaml
