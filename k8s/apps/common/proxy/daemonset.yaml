@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: proxy-client-ds
-  # namespace: proxy
+  namespace: proxy
 spec:
   # replicas: 1
   selector:
