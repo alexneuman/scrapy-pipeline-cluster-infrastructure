@@ -14,4 +14,4 @@ spec:
   nfs:
     path: /home/wireshark-server/backup/scrapy-cache
     # server: 10.96.0.50
-    server: 192.168.50.164
+    server: 192.168.50.165
