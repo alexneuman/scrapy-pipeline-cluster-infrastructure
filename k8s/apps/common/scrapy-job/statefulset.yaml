@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: scrapy-job
+  namespace: scrapy-job
   labels:
     app: scrapy-job
 spec:
