@@ -49,9 +49,3 @@ spec:
             value: "true"
           - name: CAMOUFOX_HEADLESS
             value: "false"
-          - name: CAMOUFOX_TEST_URL
-            value: "https://www.realestate.com.au/property-townhouse-vic-tarneit-144701196"
-          - name: CAMOUFOX_SUCCESS_XPATH
-            value: "//div[@class='property-info__header']"
-          - name: CAMOUFOX_TEST_XPATH_TIMEOUT
-            value: "10000"

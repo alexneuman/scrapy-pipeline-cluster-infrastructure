@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: scrapy-job
-          image: scrapy-job
+          image: alexshrugged92/scrapy-job
       # topologySpreadConstraints:
       #   - maxSkew: 1
       #     topologyKey: zone
