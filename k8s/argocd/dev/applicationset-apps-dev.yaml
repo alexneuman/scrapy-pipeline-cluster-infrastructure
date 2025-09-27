@@ -21,6 +21,8 @@ spec:
           # namespace: dev
         - name: redis
           path: k8s/apps/base/redis
+        - name: argocd
+          path: k8s/apps/base/argocd
           # namespace: dev
         - name: redis-commander
           path: k8s/apps/common/redis-commander
