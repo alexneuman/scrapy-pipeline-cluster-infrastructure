@@ -15,7 +15,7 @@ spec:
             namespace: prometheus
   template:
     metadata:
-      name: '{{name}}-dev' # Application name = folder name
+      name: '{{name}}' # Application name = folder name
     spec:
       project: default
       source:
