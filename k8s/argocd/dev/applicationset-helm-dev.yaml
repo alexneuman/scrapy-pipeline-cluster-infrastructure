@@ -9,8 +9,8 @@ spec:
         elements:
           - name: ingress-nginx
             namespace: ingress-nginx
-          - name: cert-manager
-            namespace: cert-manager
+          # - name: cert-manager
+          #   namespace: cert-manager
           - name: prometheus
             namespace: prometheus
   template:
