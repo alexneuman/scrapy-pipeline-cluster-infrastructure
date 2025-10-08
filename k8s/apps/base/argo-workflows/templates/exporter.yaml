@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: my-app-template
+spec:
+  entrypoint: run-my-app
+  templates:
+    - name: run-my-app
+      container:
+        image: alexshrugged92/exporter:latest
+        command: ["python", "main.py"]
+        env:
+          - name: REDIS_HOST
+            value: "redis.redis.svc.cluster.local"
+          - name: REDIS_PORT
+            value: "6379"
+          - name: SPIDER_NAME
+            value: "mock-server"
+          - name: TO_EMAILS
+            value: "alexanderscottneuman@gmail.com"
+        volumeMounts:
+          - name: token-volume
+            mountPath: /app/token.json
+            subPath: token.json
+            readOnly: true
+      volumes:
+        - name: token-volume
+          configMap:
+            name: token-configmap
