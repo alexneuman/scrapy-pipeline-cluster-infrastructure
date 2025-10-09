@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: backend.localhost
+  - host: backend.askaboutmydad.shop
     http:
       paths:
       - path: /
