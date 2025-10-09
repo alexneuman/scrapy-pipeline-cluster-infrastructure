@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: redis-commander-traefik
   namespace: redis
+  annotations:
+    "traefik.ingress.kubernetes.io/service.serversscheme": "http"
 spec:
   ingressClassName: traefik
   rules:
