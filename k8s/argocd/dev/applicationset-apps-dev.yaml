@@ -14,7 +14,7 @@ spec:
         #   path: k8s/apps/base/argoworkflows
           # namespace: metallb-system
         - name: scrapy-job-api
-          path: k8s/apps/base/mock-ws-backend
+          path: k8s/apps/base/scrapy-job-api
           # namespace: 
         - name: database
           path: k8s/apps/common/database
