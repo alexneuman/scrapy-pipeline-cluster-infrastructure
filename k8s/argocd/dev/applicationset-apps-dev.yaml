@@ -30,6 +30,9 @@ spec:
         # - name: scrapy-job
         #   path: k8s/apps/common/scrapy-job
           # namespace: dev
+        - name: metallb
+          path: k8s/apps/common/metallb
+          # namespace: metallb-system
   template:
     metadata:
       name: '{{name}}'
