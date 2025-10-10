@@ -13,6 +13,8 @@ spec:
           #   namespace: cert-manager
           - name: prometheus
             namespace: prometheus
+          - name: metallb
+            namespace: metallb-system
   template:
     metadata:
       name: '{{name}}' # Application name = folder name
