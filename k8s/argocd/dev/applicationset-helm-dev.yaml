@@ -15,22 +15,23 @@ spec:
             namespace: prometheus
           - name: metallb
             namespace: metallb-system
+            projectName: metallb-controller   # optional override example
   template:
     metadata:
-      name: '{{name}}' # Application name = folder name
+      name: '{{if .projectName}}{{.projectName}}{{else}}{{.name}}{{end}}'
     spec:
       project: default
       source:
         repoURL: 'https://github.com/alexneuman/scrapy-pipeline-cluster-infrastructure.git'
         targetRevision: test
-        path: 'k8s/helm/charts/{{name}}'         # folder containing the chart
+        path: 'k8s/helm/charts/{{name}}'
         helm:
           valueFiles:
             - "../../charts/{{name}}/values.yaml"
-            - "../../values/dev/{{name}}/values.yaml"       # values file in each chart folder
+            - "../../values/dev/{{name}}/values.yaml"
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{namespace}}'  # deploy each chart to its own namespace
+        namespace: '{{namespace}}'
       syncPolicy:
         automated:
           prune: true
