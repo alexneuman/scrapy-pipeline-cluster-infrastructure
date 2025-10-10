@@ -10,6 +10,9 @@ spec:
         - name: mock-ws-backend
           path: k8s/apps/common/mock-ws-backend
           # namespace: dev
+        - name: argo-workflows
+          path: k8s/apps/base/argoworkflows
+          # namespace: metallb-system
         - name: database
           path: k8s/apps/common/database
           namespace: dev

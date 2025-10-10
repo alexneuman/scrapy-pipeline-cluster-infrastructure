@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scrapy-job-api
+  namespace: jobs
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: scrapy-job-api
+    spec:
+      containers:
+        - name: scrapy-job-api
+          image: alexshrugged92/scrapy-job-api
+          env:
+            - name: "SECRET_KEY"
+              value: "supersecretkey"
+            - name: "WORKFLOWS_HOST"
+              value: "argo-workflows-server.argo.svc.cluster.local"
+            - name: "WORKFLOWS_PORT"
+              value: "2746"
+  selector:
+    matchLabels:
+      app: scrapy-job-api
