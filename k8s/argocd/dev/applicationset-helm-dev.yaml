@@ -9,16 +9,18 @@ spec:
         elements:
           - name: ingress-nginx
             namespace: ingress-nginx
+            projectName: ingress-nginx
           # - name: cert-manager
           #   namespace: cert-manager
           - name: prometheus
             namespace: prometheus
+            projectName: prometheus
           - name: metallb
             namespace: metallb-system
             projectName: metallb-controller   # optional override example
   template:
     metadata:
-      name: '{{if .projectName}}{{.projectName}}{{else}}{{.name}}{{end}}'
+      name: '{{projectName}}'
     spec:
       project: default
       source:
