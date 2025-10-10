@@ -18,6 +18,9 @@ spec:
           - name: metallb
             namespace: metallb-system
             projectName: metallb-controller   # optional override example
+          - name: argo-workflows
+            namespace: argo
+            projectName: argo-workflows
   template:
     metadata:
       name: '{{projectName}}'
