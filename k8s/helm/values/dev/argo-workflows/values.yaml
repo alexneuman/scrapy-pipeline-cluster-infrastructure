@@ -2,3 +2,16 @@ server:
   auth: false
   insecure: true
   extraArgs: ["--auth-mode=server"]
+ingress:
+    # -- Enable an ingress resource
+    enabled: true
+    # annotations: {}
+    # labels: {}
+    ingressClassName: "nginx"
+    hosts: [
+      "workflows.askaboutmydad.shop"
+    ]
+    paths:
+      - /
+    pathType: Prefix
+    extraPaths: []
