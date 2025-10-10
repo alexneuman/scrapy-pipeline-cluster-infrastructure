@@ -10,9 +10,12 @@ spec:
         - name: mock-ws-backend
           path: k8s/apps/common/mock-ws-backend
           # namespace: dev
-        - name: argo-workflows
-          path: k8s/apps/base/argoworkflows
+        # - name: argo-workflows
+        #   path: k8s/apps/base/argoworkflows
           # namespace: metallb-system
+        - name: scrapy-job-api
+          path: k8s/apps/base/mock-ws-backend
+          # namespace: 
         - name: database
           path: k8s/apps/common/database
           namespace: dev
@@ -30,9 +33,6 @@ spec:
         - name: redis-commander
           path: k8s/apps/common/redis-commander
           namespace: dev
-        # - name: scrapy-job
-        #   path: k8s/apps/common/scrapy-job
-          # namespace: dev
         - name: metallb-config
           path: k8s/apps/common/metallb
           # namespace: metallb-system
