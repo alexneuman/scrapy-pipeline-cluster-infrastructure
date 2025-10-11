@@ -22,4 +22,4 @@ spec:
               value: "2746"
   selector:
     matchLabels:
-      app: scrapy-job-api
+      app: "scrapy-job-api"

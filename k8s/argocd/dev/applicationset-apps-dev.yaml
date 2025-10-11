@@ -32,7 +32,7 @@ spec:
           # namespace: dev
         - name: redis-commander
           path: k8s/apps/common/redis-commander
-          namespace: dev
+          # namespace: dev
         - name: metallb-config
           path: k8s/apps/common/metallb
           # namespace: metallb-system
