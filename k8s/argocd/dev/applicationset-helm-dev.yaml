@@ -41,6 +41,7 @@ spec:
           valueFiles:
             - "../../charts/{{name}}/values.yaml"
             - "../../values/dev/{{name}}/values.yaml"
+          skipCrds: true
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{namespace}}'
