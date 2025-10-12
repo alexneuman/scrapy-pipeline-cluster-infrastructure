@@ -5,27 +5,27 @@ metadata:
   namespace: jobs
 spec:
   ingressClassName: nginx
-  rules:
-  - host: jobs.askaboutmydad.shop
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: scrapy-job-api
-            port:
-              number: 8000
-  - host: jobs.localhost
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: scrapy-job-api
-            port:
-              number: 8000
+  # rules:
+  # - host: jobs.askaboutmydad.shop
+  #   http:
+  #     paths:
+  #     - path: /
+  #       pathType: Prefix
+  #       backend:
+  #         service:
+  #           name: scrapy-job-api
+  #           port:
+  #             number: 8000
+  # - host: jobs.localhost
+  #   http:
+  #     paths:
+  #     - path: /
+  #       pathType: Prefix
+  #       backend:
+  #         service:
+  #           name: scrapy-job-api
+  #           port:
+  #             number: 8000
   # tls:
   # - hosts:
   #   - jobs.askaboutmydad.shop

@@ -1,0 +1,46 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: applicationset-helm
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: ingress-nginx
+            namespace: ingress-nginx
+            projectName: ingress-nginx
+          - name: cert-manager
+            namespace: cert-manager
+            projectName: cert-manager
+          - name: prometheus
+            namespace: prometheus
+            projectName: prometheus
+          - name: metallb
+            namespace: metallb-system
+            projectName: metallb-controller   # optional override example
+          - name: argo-workflows
+            namespace: argo
+            projectName: argo-workflows
+  template:
+    metadata:
+      name: '{{projectName}}'
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/alexneuman/scrapy-pipeline-cluster-infrastructure.git'
+        targetRevision: test
+        path: 'k8s/helm/charts/{{name}}'
+        helm:
+          valueFiles:
+            - "../../charts/{{name}}/values.yaml"
+            - "../../values/prod/{{name}}/values.yaml"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true

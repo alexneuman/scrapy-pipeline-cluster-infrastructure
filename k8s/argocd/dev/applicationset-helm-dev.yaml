@@ -14,7 +14,7 @@ spec:
             namespace: cert-manager
             projectName: cert-manager
           - name: prometheus
-            namespace: prometheus
+            namespace: monitoring
             projectName: prometheus
           - name: metallb
             namespace: metallb-system
