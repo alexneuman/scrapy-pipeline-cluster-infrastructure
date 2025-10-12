@@ -18,10 +18,13 @@ spec:
             projectName: prometheus
           - name: metallb
             namespace: metallb-system
-            projectName: metallb-controller   # optional override example
+            projectName: metallb-controller   
           - name: argo-workflows
             namespace: argo
             projectName: argo-workflows
+          - name: istio-base
+            namespace: istio-system
+            projectName: istio-base
   template:
     metadata:
       name: '{{projectName}}'
