@@ -1,0 +1,10 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: jobs
+spec:
+  tls:
+  - hosts:
+    - jobs.askaboutmydad.shop
+    secretName: jobs-tls

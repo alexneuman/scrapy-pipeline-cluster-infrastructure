@@ -8,13 +8,13 @@ spec:
   - list:
       elements:
         - name: mock-ws-backend
-          path: k8s/apps/common/mock-ws-backend
+          path: k8s/apps/overlays/dev/mock-ws-backend
           # namespace: dev
         # - name: argo-workflows
         #   path: k8s/apps/base/argoworkflows
           # namespace: metallb-system
         - name: scrapy-job-api
-          path: k8s/apps/base/scrapy-job-api
+          path: k8s/apps/overlays/dev/scrapy-job-api
           # namespace: 
         - name: database
           path: k8s/apps/common/database
