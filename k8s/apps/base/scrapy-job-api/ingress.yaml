@@ -26,7 +26,7 @@ spec:
             name: scrapy-job-api
             port:
               number: 8000
-  tls:
-  - hosts:
-    - jobs.askaboutmydad.shop
-    secretName: jobs-tls
+  # tls:
+  # - hosts:
+  #   - jobs.askaboutmydad.shop
+  #   secretName: jobs-tls
