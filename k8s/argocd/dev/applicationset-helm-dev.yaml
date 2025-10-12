@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: applicationset-dev
+  name: applicationset-helm
   namespace: argocd
 spec:
   generators:
@@ -12,6 +12,7 @@ spec:
             projectName: ingress-nginx
           - name: cert-manager
             namespace: cert-manager
+            projectName: cert-manager
           - name: prometheus
             namespace: prometheus
             projectName: prometheus
