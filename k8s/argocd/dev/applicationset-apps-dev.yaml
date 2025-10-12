@@ -36,6 +36,9 @@ spec:
         - name: metallb-config
           path: k8s/apps/overlays/dev/metallb-config
           # namespace: metallb-system
+        - name: prometheus-config
+          path: k8s/apps/overlays/dev/prometheus
+          
   template:
     metadata:
       name: '{{name}}'
