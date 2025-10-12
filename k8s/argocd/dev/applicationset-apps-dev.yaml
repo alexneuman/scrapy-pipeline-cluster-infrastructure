@@ -17,24 +17,24 @@ spec:
           path: k8s/apps/overlays/dev/scrapy-job-api
           # namespace: 
         - name: database
-          path: k8s/apps/common/database
-          namespace: dev
+          path: k8s/apps/overlays/dev/database
+          # namespace: dev
         - name: camoufox
-          path: k8s/apps/common/camoufox
+          path: k8s/apps/overlays/dev/camoufox
           # namespace: dev
         - name: proxy
-          path: k8s/apps/common/proxy
+          path: k8s/apps/overlays/dev/proxy
           # namespace: dev
         - name: redis
-          path: k8s/apps/base/redis
+          path: k8s/apps/overlays/dev/redis
         - name: argocd
-          path: k8s/apps/base/argocd
+          path: k8s/apps/overlays/dev/argocd
           # namespace: dev
         - name: redis-commander
-          path: k8s/apps/common/redis-commander
+          path: k8s/apps/overlays/dev/redis-commander
           # namespace: dev
         - name: metallb-config
-          path: k8s/apps/common/metallb
+          path: k8s/apps/overlays/dev/metallb-config
           # namespace: metallb-system
   template:
     metadata:
