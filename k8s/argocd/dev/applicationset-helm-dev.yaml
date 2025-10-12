@@ -25,6 +25,9 @@ spec:
           - name: istio-base
             namespace: istio-system
             projectName: istio-base
+          - name: istiod
+            namespace: istio-system
+            projectName: istiod
   template:
     metadata:
       name: '{{projectName}}'
