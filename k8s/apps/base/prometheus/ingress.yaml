@@ -16,3 +16,13 @@ spec:
             name: prometheus-server
             port:
               number: 80
+  - host: prometheus.localhost
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: prometheus-server
+            port:
+              number: 80
