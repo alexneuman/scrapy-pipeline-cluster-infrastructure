@@ -13,9 +13,9 @@ spec:
           - name: cert-manager
             namespace: cert-manager
             projectName: cert-manager
-          - name: prometheus
-            namespace: monitoring
-            projectName: prometheus
+          # - name: prometheus
+          #   namespace: monitoring
+          #   projectName: kube-prometheus-stack
           - name: metallb
             namespace: metallb-system
             projectName: metallb-controller   
