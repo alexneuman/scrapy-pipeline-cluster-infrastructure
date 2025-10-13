@@ -22,21 +22,21 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Read the token from ../secrets/google_api_token.json
 SECRET_FILE="$SCRIPT_DIR/../secrets/google_api_token.json"
 
-if [[ ! -f "$SECRET_FILE" ]]; then
-  echo "Error: $SECRET_FILE not found"
+# Check file exists and is not empty
+if [[ ! -s "$SECRET_FILE" ]]; then
+  echo "Error: $SECRET_FILE is empty or missing"
   exit 1
 fi
 
-TOKEN=$(jq -r '.token // empty' "$SECRET_FILE")
+# Read the entire contents into a variable
+TOKEN_JSON=$(<"$SECRET_FILE")
 
-if [[ -z "$TOKEN" ]]; then
-  echo "Error: token field is empty in $SECRET_FILE"
-  exit 1
-fi
+# Create or update the ConfigMap
+kubectl -n argo create configmap token-configmap \
+  --from-literal=token.json="$TOKEN_JSON" \
+  --dry-run=client -o yaml | kubectl apply -f -
 
-# Create or update the configmap in the argo namespace
-kubectl -n argo create configmap token-configmap --from-literal=token="$TOKEN" --dry-run=client -o yaml | kubectl apply -f -
-echo "Created configmap 'token-configmap' in the argo namespace."
+echo "Created ConfigMap 'token-configmap' in the argo namespace."
 
 # Install ArgoCD
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
