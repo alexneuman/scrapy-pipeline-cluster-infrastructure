@@ -4,3 +4,4 @@ metadata:
   name: backend
   labels:
     name: backend
+    istio-injection: enabled
