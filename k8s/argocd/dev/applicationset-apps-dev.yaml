@@ -38,6 +38,8 @@ spec:
           # namespace: metallb-system
         - name: prometheus-config
           path: k8s/apps/overlays/dev/prometheus
+        - name: monitoring-servicemonitors
+          path: k8s/monitoring/base/servicemonitors
           
   template:
     metadata:
