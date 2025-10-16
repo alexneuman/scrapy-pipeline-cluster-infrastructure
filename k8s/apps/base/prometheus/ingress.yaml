@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: prometheus-server
+  name: prometheus-operated
   namespace: monitoring
 spec:
   ingressClassName: nginx
@@ -13,7 +13,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: prometheus-server
+            name: prometheus-operated
             port:
               number: 80
   - host: prometheus.localhost
@@ -23,6 +23,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: prometheus-server
+            name: prometheus-operated
             port:
               number: 80
