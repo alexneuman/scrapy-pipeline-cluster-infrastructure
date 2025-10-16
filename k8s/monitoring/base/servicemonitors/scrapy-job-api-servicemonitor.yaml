@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: scrapy-job-api-envoy
+  namespace: monitoring
+  labels:
+    release: kube-prometheus-stack
+spec:
+  namespaceSelector:
+    matchNames:
+      - jobs
+  selector: {}
+  endpoints:
+    - path: /stats/prometheus
+      port: http-envoy
+      interval: 15s
+      relabelings:
+        - action: labelmap
+          regex: __meta_kubernetes_pod_label_(.+)

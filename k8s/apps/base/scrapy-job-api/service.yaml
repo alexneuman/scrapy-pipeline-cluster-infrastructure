@@ -8,6 +8,11 @@ spec:
     app: scrapy-job-api
   type: ClusterIP
   ports:
-    - port: 8000
-      targetPort: 8000
-      protocol: TCP
+  - name: http 
+    port: 8000
+    targetPort: 8000
+    protocol: TCP
+  - name: http-envoy
+    port: 15090
+    targetPort: 15090
+    protocol: TCP
