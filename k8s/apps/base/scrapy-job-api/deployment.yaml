@@ -20,6 +20,10 @@ spec:
               value: "argo-workflows-server.argo.svc.cluster.local"
             - name: "WORKFLOWS_PORT"
               value: "2746"
+            - name: REDIS_HOST
+              value: "redis.redis.svc.cluster.local"
+            - name: REDIS_PORT
+              value: "6379"
   selector:
     matchLabels:
       app: "scrapy-job-api"
