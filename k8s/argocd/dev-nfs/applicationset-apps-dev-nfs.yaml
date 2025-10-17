@@ -1,0 +1,56 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: applicationset-apps-dev-nfs
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+        - name: mock-ws-backend
+          path: k8s/apps/overlays/dev/mock-ws-backend
+        - name: scrapy-job-api
+          path: k8s/apps/overlays/dev/scrapy-job-api
+        - name: database
+          path: k8s/apps/overlays/dev/database
+        - name: camoufox
+          path: k8s/apps/overlays/dev/camoufox
+        - name: proxy
+          path: k8s/apps/overlays/dev/proxy
+        - name: redis
+          path: k8s/apps/overlays/dev/redis
+        - name: argocd
+          path: k8s/apps/overlays/dev/argocd
+        - name: redis-commander
+          path: k8s/apps/overlays/dev/redis-commander
+        - name: metallb-config
+          path: k8s/apps/overlays/dev/metallb-config
+        - name: prometheus-config
+          path: k8s/apps/overlays/dev/prometheus
+        - name: monitoring-servicemonitors
+          path: k8s/monitoring/overlays/dev
+        - name: nfs-storage
+          path: k8s/storage/overlays/dev-nfs
+          
+  template:
+    metadata:
+      name: '{{name}}'
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/alexneuman/scrapy-pipeline-cluster-infrastructure.git'
+        targetRevision: test
+        path: '{{path}}'
+        # directory:
+        #   recurse: true
+      destination:
+        server: https://kubernetes.default.svc
+        # namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true
+
