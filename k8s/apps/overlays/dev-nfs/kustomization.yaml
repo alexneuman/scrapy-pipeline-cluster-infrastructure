@@ -1,0 +1,8 @@
+
+resources:
+  - ../../base
+  - mock-ws-backend
+  - database
+  - camoufox
+  - proxy
+  - redis-commander

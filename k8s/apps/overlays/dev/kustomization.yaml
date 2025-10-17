@@ -6,4 +6,3 @@ resources:
   - ../../common/camoufox
   - ../../common/proxy
   - ../../common/redis-commander
-  - scrapy-job
