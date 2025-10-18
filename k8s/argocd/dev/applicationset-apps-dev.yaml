@@ -40,6 +40,8 @@ spec:
           path: k8s/apps/overlays/dev/prometheus
         - name: monitoring-servicemonitors
           path: k8s/monitoring/overlays/dev
+        - name: nfs-storage
+          path: k8s/storage/overlays/dev
           
   template:
     metadata:
