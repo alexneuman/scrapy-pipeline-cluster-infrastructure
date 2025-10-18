@@ -10,4 +10,4 @@ spec:
     requests:
       storage: 1Mi
   volumeMode: Filesystem
-  storageClassName: dummy
+  storageClassName: ""
