@@ -1,14 +1,13 @@
 
 resources:
-  - ../../dev
-  - pv.yaml
+  - ../../base
 
 patches:
-  # - path: pv.yaml
-  #   target:
-  #     kind: PersistentVolume
-  #     name: pv
   - path: pvc-argo-jobs.yaml
     target:
       kind: PersistentVolumeClaim
       name: pvc-argo-workflows
+  - path: pv.yaml
+    target:
+      kind: PersistentVolume
+      name: pv
