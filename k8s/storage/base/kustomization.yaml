@@ -1,4 +1,3 @@
 
 resources:
-  - nfs-pv.yaml
-  - nfs-pvc-argo-jobs.yaml
+  - pvc-argo-jobs.yaml

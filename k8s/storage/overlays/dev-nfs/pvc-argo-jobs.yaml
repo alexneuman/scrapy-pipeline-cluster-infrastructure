@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nfs-pvc-argo-workflows
+  name: pvc-argo-workflows
   namespace: argo
 spec:
   accessModes:
@@ -9,5 +9,5 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  storageClassName: ""     
-  volumeName: nfs-pv  
+  storageClassName: ""
+  volumeName: pv

@@ -1,11 +1,14 @@
 
 resources:
   - ../../base
-  # - nfs-pv.yaml
-  # - nfs-pvc-argo-jobs.yaml
+  - pv.yaml
 
 patches:
-  - path: nfs-pv.yaml
+  # - path: pv.yaml
+  #   target:
+  #     kind: PersistentVolume
+  #     name: pv
+  - path: pvc-argo-jobs.yaml
     target:
-      kind: PersistentVolume
-      name: nfs-pv
+      kind: PersistentVolumeClaim
+      name: pvc-argo-workflows

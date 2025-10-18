@@ -1,3 +1,9 @@
 
 resources:
   - ../../base
+
+patches:
+  - path: pvc-argo-jobs.yaml
+    target:
+      kind: PersistentVolumeClaim
+      name: pvc-argo-workflows
