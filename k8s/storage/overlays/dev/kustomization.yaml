@@ -7,3 +7,7 @@ patches:
     target:
       kind: PersistentVolumeClaim
       name: pvc-argo-workflows
+  - path: pv.yaml
+    target:
+      kind: PersistentVolume
+      name: pv

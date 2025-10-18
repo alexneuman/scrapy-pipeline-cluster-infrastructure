@@ -1,3 +1,4 @@
 
 resources:
   - pvc-argo-jobs.yaml
+  - pv.yaml

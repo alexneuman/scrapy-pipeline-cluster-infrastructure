@@ -1,6 +1,6 @@
 
 resources:
-  - ../../base
+  - ../../dev
   - pv.yaml
 
 patches:
