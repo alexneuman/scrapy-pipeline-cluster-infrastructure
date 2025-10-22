@@ -5,3 +5,4 @@ metadata:
   labels:
     name: backend
     istio-injection: enabled
+    pod-security.kubernetes.io/enforce: privileged
