@@ -2,3 +2,4 @@
 resources:
   - lb-pool.yaml
   - l2-advertisement.yaml
+  - namespace.yaml
