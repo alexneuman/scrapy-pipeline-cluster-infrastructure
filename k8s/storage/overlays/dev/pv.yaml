@@ -8,7 +8,7 @@ spec:
   accessModes:
     - ReadWriteMany
   storageClassName: ""
-  persistentVolumeReclaimPolicy: Delete
-  volumeMode: Filesystem
+  # persistentVolumeReclaimPolicy: Delete
+  # volumeMode: Filesystem
   hostPath:
     path: /tmp/dummy-argo

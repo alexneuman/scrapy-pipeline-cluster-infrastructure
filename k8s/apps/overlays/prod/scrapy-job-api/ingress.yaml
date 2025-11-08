@@ -8,5 +8,5 @@ metadata:
 spec:
   tls:
   - hosts:
-    - jobs.askaboutmydad.shop
+    - jobs.scrapeops.dev
     secretName: jobs-tls

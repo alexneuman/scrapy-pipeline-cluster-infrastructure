@@ -6,7 +6,7 @@ server:
       enabled: true
       ingressClassName: "nginx"
       hosts: [
-        "workflows.askaboutmydad.shop",
+        "workflows.scrapeops.dev",
         "workflows.localhost"
       ]
       paths:

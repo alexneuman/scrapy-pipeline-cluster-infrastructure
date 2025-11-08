@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: jobs.askaboutmydad.shop
+  - host: jobs.scrapeops.dev
     http:
       paths:
       - path: /
@@ -28,5 +28,5 @@ spec:
               number: 8000
   # tls:
   # - hosts:
-  #   - jobs.askaboutmydad.shop
+  #   - jobs.scrapeops.dev
   #   secretName: jobs-tls
