@@ -8,5 +8,5 @@ metadata:
 spec:
   tls:
   - hosts:
-    - jobs.scrapeops.dev
+    - jobs.scrapeops.test
     secretName: jobs-tls

@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: prometheus.scrapeops.dev
+  - host: prometheus.scrapeops.test
     http:
       paths:
       - path: /
